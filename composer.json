@@ -1,0 +1,20 @@
+{
+    "name": "llvdl/slim-router-js",
+    "description": "Slim Router for Javascript",
+    "require": {
+        "slim/slim": "^3.9"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lennaert van der Linden",
+            "email": "lennaertvanderlinden@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Llvdl\\Slim\\": "src/"
+        }
+    },
+    "version": "1.0.0"
+}
