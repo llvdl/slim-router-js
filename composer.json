@@ -1,6 +1,8 @@
 {
     "name": "llvdl/slim-router-js",
+    "type": "library",
     "description": "Slim Router for Javascript",
+    "keywords": ["Slim framework", "router", "javascript"],
     "require": {
         "slim/slim": "^3.9"
     },
@@ -8,7 +10,8 @@
     "authors": [
         {
             "name": "Lennaert van der Linden",
-            "email": "lennaertvanderlinden@gmail.com"
+            "email": "lennaertvanderlinden@gmail.com",
+            "homepage": "https://github.com/llvdl/"
         }
     ],
     "autoload": {
