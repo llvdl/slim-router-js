@@ -44,9 +44,9 @@ use FastRoute\RouteParser\Std;
  */
 class RouterJs
 {
-	const MINIFIED_JS_TEMPLATE = 'route.min.js.php';
-	const JS_TEMPLATE = 'route.js.php';
-	
+    const MINIFIED_JS_TEMPLATE = 'route.min.js.php';
+    const JS_TEMPLATE = 'route.js.php';
+
     /**
      * @var Router
      */
@@ -118,9 +118,9 @@ class RouterJs
                 $routes[$route->getName()] = $parser->parse($route->getPattern());
             }
         }
-        
+
         return $routes;
-	}
+    }
 
     /**
      * @var array $variables
@@ -140,10 +140,10 @@ class RouterJs
      */
     private function getJsTemplateFile()
     {
-		$template = ($this->minifiedJs ? self::MINIFIED_JS_TEMPLATE : SELF::JS_TEMPLATE);
-		
-		return sprintf('%s/template/%s', __DIR__, $template);
-	}
+        $template = ($this->minifiedJs ? self::MINIFIED_JS_TEMPLATE : self::JS_TEMPLATE);
+
+        return sprintf('%s/template/%s', __DIR__, $template);
+    }
 
     /**
      * @return string

@@ -9,20 +9,20 @@ $app = new \Slim\App();
 
 // set a base path for absolute URLs
 $app->add(function ($request, $response, $next) use ($app) {
-	$app->getContainer()->get('router')->setBasePath('https://example.com');
-	
-	return $next($request, $response);
+    $app->getContainer()->get('router')->setBasePath('https://example.com');
+
+    return $next($request, $response);
 });
 
 // Add router javascript
-$app->get('/router.js', function($req, $res, $args) {
+$app->get('/router.js', function ($req, $res, $args) {
     $routerJs = new \Llvdl\Slim\RouterJs($this->router);
     return $routerJs->getRouterJavascriptResponse();
 });
 
 // Add a named route
-$app->get('/hello/{name}', function($req, $res, $args) {
-  return 'hello ' . htmlspecialchars($args['name']);
+$app->get('/hello/{name}', function ($req, $res, $args) {
+    return 'hello ' . htmlspecialchars($args['name']);
 })->setName('hello');
 
 // Add a named routes within a group
@@ -37,8 +37,8 @@ $app->group('/users/{id:[0-9]+}', function () {
 });
 
 // Add a route to a HTML that calls the Slim.Router object in Javascript
-$app->get('/', function($req, $res) {
-	return file_get_contents(__DIR__ . '/home.html');
+$app->get('/', function ($req, $res) {
+    return file_get_contents(__DIR__ . '/home.html');
 });
 
 $app->run();
