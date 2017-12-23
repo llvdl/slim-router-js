@@ -92,10 +92,18 @@ RouterJs methods:
 RouterJs is the PHP class that generates the Javascript code. It provides
 the following methods:
 
-* `__constructor(\Slim\Router $router)`: constructor
-* `getRouterJavascriptResponse(): Slim\Response`: returns a HTTP response
-for use in an action
-* `getRouterJavascript(): string`: generates the javascript code
+* `__constructor(\Slim\Router $router, bool $minified)`: constructor
+
+    By default a minified javascript is returned. Set `$minified` to false for 
+    non-minified javascript code.
+
+* `getRouterJavascriptResponse(): Slim\Response`
+
+    Returns a HTTP response for use in an action
+    
+* `getRouterJavascript(): string`
+
+    Generates the javascript code
 
 Slim.Router methods
 -------------------
@@ -108,10 +116,31 @@ The `Slim.Router` object provides the following methods:
 These method work as the `Slim\Router::pathFor()` and
 `Slim\Router::relativePathFor()` methods in PHP.
 
+Tests
+-----
+
+The repository contains PHPUnit tests for the PHP code. To run these:
+
+    phpunit -c app/phpunit.xml
+
+There are no automatic tests for the javascript code. It has been
+manually tested, and found to be working, using the 
+[example code](./example) in the following browsers:
+
+* Chrome and Chromium
+* Firefox
+* Microsoft Edge
+* Microsoft Internet Explorer 11
+
 Todo
 ----
+This section lists some future functional improvements that can be made:
 
-* Add tests
+
 * Filter exposed routes, for example by route argument
+
 * Caching
+
+    Note that middleware can be used to cache the response.
+    
 * Allow for inclusing in a Javascript bundler, for example Webpack

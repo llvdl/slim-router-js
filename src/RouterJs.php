@@ -44,6 +44,9 @@ use FastRoute\RouteParser\Std;
  */
 class RouterJs
 {
+	const MINIFIED_JS_TEMPLATE = 'route.min.js.php';
+	const JS_TEMPLATE = 'route.js.php';
+	
     /**
      * @var Router
      */
@@ -58,13 +61,19 @@ class RouterJs
      * @var string
      */
     private $jsObjectName = 'Router';
+    
+    /**
+     * @var bool
+     */
+    private $minifiedJs;
 
     /**
      * @param Router
      */
-    public function __construct(Router $router)
+    public function __construct(Router $router, $minified = true)
     {
         $this->router = $router;
+        $this->minifiedJs = $minified;
     }
 
     /**
@@ -90,6 +99,17 @@ class RouterJs
      */
     public function getRouterJavascript()
     {
+        return $this->createRouteJs([
+            'basePath' => $this->getBasePath(),
+            'routes' => $this->getParsedRoutes()
+        ]);
+    }
+    
+    /**
+     * return array
+     */
+    private function getParsedRoutes()
+    {
         $parser = new Std();
 
         $routes = [];
@@ -98,12 +118,9 @@ class RouterJs
                 $routes[$route->getName()] = $parser->parse($route->getPattern());
             }
         }
-
-        return $this->createRouteJs([
-            'basePath' => $this->getBasePath(),
-            'routes' => $routes
-        ]);
-    }
+        
+        return $routes;
+	}
 
     /**
      * @var array $variables
@@ -113,10 +130,20 @@ class RouterJs
         extract($variables);
 
         ob_start();
-        include __DIR__ . '/template/route.js.php';
+        include $this->getJsTemplateFile();
 
         return ob_get_clean();
     }
+    
+    /**
+     * @return string
+     */
+    private function getJsTemplateFile()
+    {
+		$template = ($this->minifiedJs ? self::MINIFIED_JS_TEMPLATE : SELF::JS_TEMPLATE);
+		
+		return sprintf('%s/template/%s', __DIR__, $template);
+	}
 
     /**
      * @return string

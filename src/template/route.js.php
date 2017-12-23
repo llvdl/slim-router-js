@@ -1,5 +1,6 @@
 var Slim = Slim || {};
 
+// Slim Router object to generate URLs for routes
 Slim.Router = (function() {
     function Router(basePath, routes) {
         this.basePath = basePath;
