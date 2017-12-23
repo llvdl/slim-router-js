@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script src="/router.js"></script>
+  </head>
+  <body>
+	<h1>Examples of generated URLs by Slim.Router</h1>
+	<p>URL for hello world: <a id="link"><tt id="url1"></tt></a></p>  
+	<p>Absolute URL for hello world: <tt id="url2"></tt></p>  
+	<p>URL for route in group with query param: <tt id="url3"></tt></p>  
+	  
+    <script>
+		console.log(document.getElementById('url1'))
+	  document.getElementById('link').href = Slim.Router.relativePathFor('hello', {name: 'world'});
+	  document.getElementById('url1').innerHTML = Slim.Router.relativePathFor('hello', {name: 'world'});
+	  document.getElementById('url2').innerHTML = Slim.Router.pathFor('hello', {name: 'world'});
+	  document.getElementById('url3').innerHTML = Slim.Router.relativePathFor('user', {id: 5}, {'import': 'true'});
+    </script>
+  </body>
+</html>

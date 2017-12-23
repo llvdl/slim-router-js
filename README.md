@@ -84,6 +84,8 @@ In the HTML document, import `router.js`. The URL for the named route can then b
 </html>
 ```
 
+See the [`example/`](./example) folder in this repository for an example script.
+
 RouterJs methods:
 -----------------
 
