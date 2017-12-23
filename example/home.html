@@ -9,7 +9,6 @@
 	<p>URL for route in group with query param: <tt id="url3"></tt></p>  
 	  
     <script>
-		console.log(document.getElementById('url1'))
 	  document.getElementById('link').href = Slim.Router.relativePathFor('hello', {name: 'world'});
 	  document.getElementById('url1').innerHTML = Slim.Router.relativePathFor('hello', {name: 'world'});
 	  document.getElementById('url2').innerHTML = Slim.Router.pathFor('hello', {name: 'world'});
