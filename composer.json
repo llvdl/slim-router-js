@@ -18,6 +18,5 @@
         "psr-4": {
             "Llvdl\\Slim\\": "src/"
         }
-    },
-    "version": "1.0.0"
+    }
 }
